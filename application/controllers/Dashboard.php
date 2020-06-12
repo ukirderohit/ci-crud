@@ -6,7 +6,7 @@
  */
 class Dashboard extends CI_Controller {
 
-    public function index()
+    public function index():void
     {
         //if user logged in
         if (!$this->session->userdata("logged_in")) {

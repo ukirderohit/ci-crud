@@ -6,7 +6,7 @@
  */
 class Auth extends CI_Controller {
 
-    public function index()
+    public function index():void
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules("user_email", "Email", "trim|required|valid_email");
@@ -43,7 +43,7 @@ class Auth extends CI_Controller {
         $this->load->view("footer");
     }
 
-    public function logout()
+    public function logout():void
     {
         $this->session->unset_userdata("logged_in");
         $this->session->sess_destroy();

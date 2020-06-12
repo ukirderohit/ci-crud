@@ -9,7 +9,7 @@ class AuthModel extends CI_Model {
      * Verify user credentials
      * @return int
      */
-    public function validate()
+    public function validate():int
     {
         $username = $this->input->post('user_email');
         $password = $this->input->post('password');
@@ -42,7 +42,7 @@ class AuthModel extends CI_Model {
      * get user data
      * @return array
      */
-    public function get_data()
+    public function get_data():array
     {
         return $this->_data;
     }

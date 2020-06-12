@@ -5,7 +5,11 @@ class RegisterModel extends CI_Model {
     private $table = "user";
     private $_data = array();
 
-    public function validate()
+    /**
+     * validates for username and password
+     * @return int
+     */
+    public function validate():int
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -36,7 +40,13 @@ class RegisterModel extends CI_Model {
         }
     }
 
-     public function insert($data) {
+    /**
+     * inserts data into the table
+     * @param $data array
+     * @return mixed
+     */
+     public function insert(array $data):string
+     {
           $this->db->insert('user', $data);
           return $this->db->insert_id();
      }

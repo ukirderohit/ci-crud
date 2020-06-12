@@ -4,7 +4,8 @@ class HobbiesModel extends CI_Model{
      * Returns a hobby related to particular user.
      * @return array
      */
-    public function get_hobbies(){
+    public function get_hobbies():array
+    {
         $this->db->select('b.id, b.hobby');
         $this->db->from('hobby b');
         $this->db->join('userhobby a', 'a.hid = b.id');
@@ -18,7 +19,8 @@ class HobbiesModel extends CI_Model{
      * this is for admin.
      * @return array
      */
-    public function get_users() {
+    public function get_users():array
+    {
         $this->db->select('u.username, h.id, h.hobby');
         $this->db->from('user u');
         $this->db->join('userhobby uh', 'u.id = uh.userid', 'left outer');
@@ -32,7 +34,8 @@ class HobbiesModel extends CI_Model{
      * for admin
      * @return array
      */
-    public function get_count() {
+    public function get_count():array
+    {
         $this->db->select('u.username, count(h.id) as maxhobby');
         $this->db->from('user u');
         $this->db->join('userhobby uh', 'u.id = uh.userid', 'left outer');
@@ -46,10 +49,11 @@ class HobbiesModel extends CI_Model{
 
     /**
      * Returns all sub hobbies for particular user/admin
-     * @param bool|string $id contains hobby id
-     * @return mixed
+     * @param string $id contains hobby id
+     * @return array
      */
-    public function get_subhobbies($id=false){
+    public function get_subhobbies(string $id=''):array
+    {
         $this->db->select('a.hid, s.id as subid, s.subhobby');
         $this->db->from('subhobby s');
         $this->db->join('userhobby a', 'a.hid = s.hobbyid');
@@ -65,9 +69,9 @@ class HobbiesModel extends CI_Model{
 
     /**
      * Inserts dynamic records for hobby and sub hobbies
-     * @return array
+     * @return bool
      */
-    public function insert_hobbies()
+    public function insert_hobbies():bool
     {
         $hobby = array(
             'hobby' => $this->input->post('hobby'),
@@ -93,9 +97,9 @@ class HobbiesModel extends CI_Model{
     /**
      * Inserts dynamic records for sub hobbies
      * @param $id string this will be hobbyid
-     * @return array
+     * @return void
      */
-    public function insertSubHobby($id)
+    public function insertSubHobby(string $id):void
     {
         $subHobbyArr = $this->input->post('subhobby');
         foreach ($subHobbyArr as $subh) {
@@ -110,15 +114,15 @@ class HobbiesModel extends CI_Model{
     /**
      * Updating hobby and sub hobby
      * @param $id string hobbyid
-     * @return mixed
+     * @return void
      */
-    public function update_hobbies($id)
+    public function update_hobbies(string $id):void
     {
         $data=array(
             'hobby' => $this->input->post('hobby'),
         );
         if($id==0){
-            return $this->db->insert('hobby',$data);
+            $this->db->insert('hobby',$data);
         }else{
             $this->db->where('id',$id);
             $this->db->update('hobby',$data);

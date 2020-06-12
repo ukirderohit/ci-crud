@@ -7,7 +7,7 @@
  */
 class Register extends CI_Controller {
 
-    public function index()
+    public function index():void
     {
         $this->load->view("header");
         $this->load->view("navbar");
@@ -19,7 +19,7 @@ class Register extends CI_Controller {
      * Check for valid data and insert
      * email and password using password hash
      */
-    public function validation() {
+    public function validation():void {
         $this->load->library('form_validation');
         $this->load->model('registerModel', 'regMod');
         $this->form_validation->set_rules('user_email', 'Email Address', 'required|trim|valid_email|is_unique[user.username]');
@@ -47,7 +47,7 @@ class Register extends CI_Controller {
     /**
      * Logout and destroy session
      */
-    public function logout()
+    public function logout():void
     {
         $this->session->unset_userdata("logged_in");
         $this->session->sess_destroy();

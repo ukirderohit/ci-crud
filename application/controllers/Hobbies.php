@@ -18,7 +18,7 @@ class Hobbies extends CI_Controller {
     /**
      * index page for the controller
      */
-    public function index()
+    public function index():void
     {
         if (!$this->session->userdata("logged_in")) {
             redirect("auth");
@@ -34,7 +34,7 @@ class Hobbies extends CI_Controller {
     /**
      * Create a hobby
      */
-    public function create()
+    public function create():void
     {
         $this->load->view('header');
         $this->load->view('navbar');
@@ -49,7 +49,7 @@ class Hobbies extends CI_Controller {
     /**
      * Store Data for Hobby.
      */
-    public function store()
+    public function store():void
     {
         $this->hobMod->insert_hobbies();
         redirect(base_url('hobbies'));
@@ -59,7 +59,7 @@ class Hobbies extends CI_Controller {
      * Store Data for SubHobby.
      * @param $id string 'this will be the hobbyid'
      */
-    public function storeSubHobby($id)
+    public function storeSubHobby(string $id):void
     {
         $this->hobMod->insertSubHobby($id);
         redirect(base_url('hobbies'));
@@ -69,7 +69,7 @@ class Hobbies extends CI_Controller {
      * Adding SubHobby.
      * @param $id string 'this will be hobby id'
      */
-    public function addSubHobbies($id)
+    public function addSubHobbies(string $id):void
     {
         $this->load->view('header');
         $this->load->view('navbar');
@@ -86,7 +86,7 @@ class Hobbies extends CI_Controller {
      * Edit Data from this method.
      * @param $id string 'this id will be hobby id'
      */
-    public function edit($id)
+    public function edit(string $id):void
     {
         $this->load->view('header');
         $this->load->view('navbar');
@@ -104,7 +104,7 @@ class Hobbies extends CI_Controller {
      * Update Data from this method.
      * @param $id string 'hobby id'
      **/
-    public function update($id)
+    public function update(string $id):void
     {
         $this->load->view('header');
         $this->load->view('navbar');
@@ -121,7 +121,7 @@ class Hobbies extends CI_Controller {
      * Delete Data from this method for hobby.
      * @param $id string 'hobby id'
      */
-    public function delete($id)
+    public function delete(string $id):void
     {
         if (!$this->session->userdata("logged_in")) {
             redirect("welcome");
@@ -137,7 +137,7 @@ class Hobbies extends CI_Controller {
      * Delete Data from this method for sub hobby.
      * @param $id string 'this will be sub-hobby id'
      */
-    public function deleteSubHobby($id)
+    public function deleteSubHobby(string $id):void
     {
         if (!$this->session->userdata("logged_in")) {
             redirect("welcome");
