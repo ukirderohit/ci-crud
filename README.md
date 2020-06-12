@@ -13,6 +13,6 @@ Advance Authentication and Multilevel CRUD Operation using Codeigniter
 
 6.) Provide an administrator login (pre-set email and password) to see all users, with their respective hobbies and sub-hobbies. The administrator must also see which user has the most hobbies and sub-hobbies.
 
-7) Please run runThisSQL.sql first 
+7.) Please run runThisSQL.sql first 
 
-8) Admin username: pratik@gmail.com password:pratik
+8.) Admin username: pratik@gmail.com password:pratik
