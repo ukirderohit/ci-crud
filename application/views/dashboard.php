@@ -1,4 +1,5 @@
 <h2><?php echo $uCount[0]->username?> user has the most hobbies and sub-hobbies.</h2>
+<div class="table-responsive p-3">
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -15,11 +16,12 @@
     <?php } ?>
     </tbody>
 </table>
+</div>
 
 
 
 <h2>All Users with their respective hobby and sub-hobby</h2>
-<div class="table-responsive">
+<div class="table-responsive p-3">
     <table class="table table-bordered">
         <thead>
         <tr>
