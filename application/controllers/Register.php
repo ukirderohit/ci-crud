@@ -1,17 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * This controller can be accessed
+ * This controller can be used
  * for (all) non logged in users
+ * to register for first time
  */
 class Register extends CI_Controller {
-
-    public function logged_in_check()
-    {
-        if ($this->session->userdata("logged_in")) {
-//            redirect("dashboard");
-        }
-    }
 
     public function index()
     {
@@ -21,6 +15,10 @@ class Register extends CI_Controller {
         $this->load->view("footer");
     }
 
+    /**
+     * Check for valid data and insert
+     * email and password using password hash
+     */
     public function validation() {
         $this->load->library('form_validation');
         $this->load->model('registerModel', 'regMod');
@@ -29,7 +27,6 @@ class Register extends CI_Controller {
         $this->form_validation->set_message('is_unique', 'Oops this email is already used');
         if($this->form_validation->run())
         {
-
             $encrypted_password = password_hash($this->input->post('user_password'), PASSWORD_DEFAULT);
             $data = array(
                 'username'  => $this->input->post('user_email'),
@@ -47,6 +44,9 @@ class Register extends CI_Controller {
         }
     }
 
+    /**
+     * Logout and destroy session
+     */
     public function logout()
     {
         $this->session->unset_userdata("logged_in");

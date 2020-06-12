@@ -5,6 +5,10 @@ class AuthModel extends CI_Model {
     private $table = "user";
     private $_data = array();
 
+    /**
+     * Verify user credentials
+     * @return int
+     */
     public function validate()
     {
         $username = $this->input->post('user_email');
@@ -34,6 +38,10 @@ class AuthModel extends CI_Model {
         }
     }
 
+    /**
+     * get user data
+     * @return array
+     */
     public function get_data()
     {
         return $this->_data;

@@ -6,17 +6,8 @@
  */
 class Auth extends CI_Controller {
 
-    public function logged_in_check()
-    {
-        if ($this->session->userdata("logged_in")) {
-            redirect("welcome");
-        }
-    }
-
     public function index()
     {
-        $this->logged_in_check();
-
         $this->load->library('form_validation');
         $this->form_validation->set_rules("user_email", "Email", "trim|required|valid_email");
         $this->form_validation->set_rules("password", "Password", "trim|required");
@@ -38,10 +29,14 @@ class Auth extends CI_Controller {
                 $this->session->set_userdata($this->auth->get_data());
                 $this->session->set_userdata("logged_in", true);
                 // redirect to dashboard
-                redirect("welcome");
+                if ($this->session->userData('role')=='Admin') {
+                    redirect("dashboard");
+                } else {
+                    redirect("hobbies");
+                }
+
             }
         }
-
         $this->load->view("header");
         $this->load->view("navbar");
         $this->load->view("auth");

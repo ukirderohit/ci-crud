@@ -11,7 +11,6 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <?php echo $error ? $error : 'Enter your email and password' ?>
                     </div>
-
                     <?php echo form_open(); ?>
                     <?php $error = form_error("user_email", "<p class='text-danger'>", '</p>'); ?>
                     <div class="form-group <?php echo $error ? 'has-error' : '' ?>">

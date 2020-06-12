@@ -20,6 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+        if (!$this->session->userdata("logged_in")) {
+            redirect("auth");
+        }
 		$this->load->view('header');
 		$this->load->view('navbar');
 		$this->load->view('dashboard');

@@ -36,7 +36,7 @@
                         <?php echo $error; ?>
                     </div>
                     <input type="submit" value="Register" class="btn btn-primary">
-                    <a href="<?php echo base_url(); ?>auth" class="btn btn-dark">Login</a>
+                    <a href="<?php echo base_url(); ?>auth" class="btn btn-dark">Back to Login</a>
                     <?php echo form_close(); ?>
                 </div>
             </div>
